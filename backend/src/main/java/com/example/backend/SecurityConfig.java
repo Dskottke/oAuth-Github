@@ -24,6 +24,8 @@ public class SecurityConfig extends AbstractSecurityWebApplicationInitializer {
 
         return httpSecurity
                 .csrf().disable()
+                .securityContext((securityContext) -> securityContext
+                        .requireExplicitSave(true))
                 .httpBasic()
                 .and()
                 .build();
