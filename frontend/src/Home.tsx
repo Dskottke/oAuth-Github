@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import "./Home.css"
 
+
 function Home() {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
@@ -9,11 +10,18 @@ function Home() {
 
 
     useEffect(() => {
+
         getCurrentUser()
     }, [])
 
     function getCurrentUser() {
-        axios.get("/api/v1/auth/me")
+
+        axios.get("/api/v1/auth/me", {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
+
+        })
             .then((response) => {
                 setName(response.data);
             })
@@ -38,11 +46,11 @@ function Home() {
             password: password
         })
             .then((response) => {
-                console.log(response.data);
             })
             .then(() => getCurrentUser())
 
     }
+
     function handleLogout() {
         axios.get("/users/logout")
             .then(() => {
