@@ -7,7 +7,7 @@ function GithubRedirectPage() {
     const [searchParams] = useSearchParams()
 
     function sendCodeToBackend() {
-        axios.post("/users/oauth/github", searchParams.get("code"), {
+        axios.post("/api/v1/auth/oauth/github", searchParams.get("code"), {
             headers: {
                 'Content-Type': 'text/plain'
             }

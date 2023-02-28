@@ -1,4 +1,4 @@
-package com.example.backend;
+package com.example.backend.auth;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class GithubOAuthService {
     private String clientSecret;
     private final WebClient webClient = WebClient.create();
 
-    public String loginWithGithub(String code) {
+    public String getGithubAccessToken(String code) {
         GitHubResponse gitResponse = Objects.requireNonNull(webClient.post()
                         .uri("https://github.com/login/oauth/access_token?code=" + code + "&client_id=" + clientId + "&client_secret=" + clientSecret)
                         .accept(org.springframework.http.MediaType.APPLICATION_JSON)
