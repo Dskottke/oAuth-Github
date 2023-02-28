@@ -13,7 +13,7 @@ function Home() {
     }, [])
 
     function getCurrentUser() {
-        axios.get("/users/")
+        axios.get("/api/v1/auth/me")
             .then((response) => {
                 setName(response.data);
             })
@@ -56,8 +56,8 @@ function Home() {
             {name && <button onClick={handleLogout}>Logout</button>}
             <form className={"login-form"} onSubmit={handleSubmitLogin}>
                 <div className={"login-form name"}>
-                    <label htmlFor="name">Name</label>
-                    <input type="text" placeholder="Enter your name" onChange={handleNameChange}/>
+                    <label htmlFor="email">Name</label>
+                    <input type="text" placeholder="Enter your Email" onChange={handleNameChange}/>
                 </div>
                 <div className={"login-form password"}>
                     <label htmlFor="password">password</label>

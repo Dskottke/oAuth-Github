@@ -1,4 +1,4 @@
-package com.example.backend;
+package com.example.backend.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

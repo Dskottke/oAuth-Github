@@ -1,9 +1,9 @@
-package com.example.backend;
+package com.example.backend.repository;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
 
 public interface UserRepo extends MongoRepository<MongoUser, String> {
 
-    Optional<MongoUser> findByUsername(String username);
+    Optional<MongoUser> findByEmail(String email);
 }
